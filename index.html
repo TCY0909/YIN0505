@@ -31,7 +31,7 @@
             font-size: 5em;
             color: #eaefeb;
             line-height: 1.4;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             margin: 0;
         }
 
@@ -39,7 +39,18 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
+	.footer-sign {
+    	position: absolute;
+    	bottom: 20px;
+    	left: 50%;
+    	transform: translateX(-50%);
+    	font-family: 'Lobster​​', cursive;
+    	color: rgba(255, 255, 255, 0.9);
+    	font-size: 1.5em;
+    	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    	animation: fadeIn 1s ease;
+    	z-index: 1;
+	}
         @media (max-width: 768px) {
             #answer { font-size: 1.5em; }
             .answer-container { padding: 20px 30px; }
@@ -50,6 +61,7 @@
     <div class="answer-container">
         <p id="answer">✨ 答案正在赶来...</p>
     </div>
+    <div class="footer-sign">LunaGlo</div>
 
     <script>
         const answers = [
@@ -66,7 +78,7 @@
         
         // 随机风景背景（每次刷新不同）
         const bgImages = [
-            'images/1.png', 'images/2.png','images/3.png','images/4.webp','images/5.webp','images/6.webp'
+            './images1.png', './images2.png','./images3.png','./images4.webp','./images5.webp','./images6.webp'
         ];
 
         // 设置随机背景图片
