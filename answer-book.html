@@ -65,15 +65,17 @@
         ];
 
         const answerElement = document.getElementById('answer');
-        
+ 
         // 随机风景背景（每次刷新不同）
         const bgImages = [
-            'forest', 'mountain', 'ocean', 'sunset', 'lake', 'aurora', 
-            'waterfall', 'field', 'desert', 'stars', 'clouds', 'river'
+            'images/1.png', 'images/2.png','images/3.png','images/4.webp','images/5.webp','images/6.webp'
         ];
-        const randomBg = bgImages[Math.floor(Math.random() * bgImages.length)];
-        document.body.style.backgroundImage = `url(https://source.unsplash.com/1920x1080/?${randomBg})`;
 
+        // 设置随机背景图片
+        function setRandomBackground() {
+            const randomImage = bgImages[Math.floor(Math.random() * bgImages.length)];
+            document.body.style.backgroundImage = `url(${randomImage})`;
+        }
         // 随机显示答案
         function showNewAnswer() {
             answerElement.style.animation = 'none';
