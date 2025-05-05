@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>魔法答案之书</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 1s ease;
+            overflow: hidden;
+        }
+
+        .answer-container {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px 50px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            max-width: 80%;
+            text-align: center;
+            animation: fadeIn 1.5s ease;
+        }
+
+        #answer {
+            font-family: 'Comic Neue', cursive;
+            font-size: 2.2em;
+            color: #2d3436;
+            line-height: 1.4;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            #answer { font-size: 1.5em; }
+            .answer-container { padding: 20px 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="answer-container">
+        <p id="answer">✨ 答案正在赶来...</p >
+    </div>
+
+    <script>
+        const answers = [
+            "跟随直觉前行", "新的可能正在萌芽", "暂时保持现状", 
+            "机会就在转角处", "勇敢迈出第一步", "最好的尚未到来",
+            "休息是为了走更远", "专注当下最重要", "相信你的选择",
+            "等待最佳时机", "改变会带来惊喜", "顺其自然",
+            "你比想象中强大", "答案在你心中", "冒险值得尝试",
+            "保持开放心态", "先完成再完美", "机会需要主动争取",
+            "小小改变带来大不同", "信任你的团队", "现在正是时候"
+        ];
+
+        const answerElement = document.getElementById('answer');
+        
+        // 随机风景背景（每次刷新不同）
+        const bgImages = [
+            'forest', 'mountain', 'ocean', 'sunset', 'lake', 'aurora', 
+            'waterfall', 'field', 'desert', 'stars', 'clouds', 'river'
+        ];
+        const randomBg = bgImages[Math.floor(Math.random() * bgImages.length)];
+        document.body.style.backgroundImage = `url(https://source.unsplash.com/1920x1080/?${randomBg})`;
+
+        // 随机显示答案
+        function showNewAnswer() {
+            answerElement.style.animation = 'none';
+            setTimeout(() => {
+                const randomIndex = Math.floor(Math.random() * answers.length);
+                answerElement.textContent = answers[randomIndex];
+                answerElement.style.animation = 'fadeIn 1s ease';
+            }, 100);
+        }
+
+        // 初始加载
+        showNewAnswer();
+        // 每5秒自动更换答案
+        setInterval(showNewAnswer, 5000);
+
+        // 点击屏幕也可以更换答案
+        document.addEventListener('click', showNewAnswer);
+    </script>
+</body>
+</html>
